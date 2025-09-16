@@ -1,4 +1,13 @@
-/* Basic Reset & Body Styling */
+/* --- General Styling & Variables --- */
+:root {
+    --primary-color: #4A90E2; /* A nice blue */
+    --dark-blue: #2c3e50;
+    --light-gray: #f8f9fa;
+    --text-color: #34495e;
+    --white-color: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,135 +15,181 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f4f7f9;
-    color: #333;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header */
-header {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 40px 20px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.logo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    color: #1a237e;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: #555;
-}
-
-/* Main Content */
-main {
-    max-width: 900px;
-    margin: 40px auto;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
-section {
-    margin-bottom: 50px;
+/* --- Hero Header --- */
+.hero {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: var(--white-color);
     text-align: center;
+    padding: 100px 20px;
 }
 
-section h2 {
-    font-size: 2rem;
+.logo {
+    width: 120px;
+    height: 120px;
     margin-bottom: 20px;
-    color: #1a237e;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Download Section */
-.download-button {
-    display: inline-block;
-    background-color: #3949ab;
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.download-button:hover {
-    background-color: #1a237e;
-}
-
-/* Features Section */
-.features-grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.feature-item {
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    flex-basis: 280px;
-}
-
-.feature-item h3 {
-    font-size: 1.2rem;
+.app-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
     margin-bottom: 10px;
 }
 
-/* Screenshots Section */
-.screenshots-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.tagline {
+    font-size: 1.25rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 40px;
 }
 
-.screenshots-grid img {
-    max-width: 250px;
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Features Section --- */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.feature-item {
+    background: var(--white-color);
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
 }
 
-/* Footer */
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item h3 {
+    font-size: 1.4rem;
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+}
+
+/* --- Screenshots Section --- */
+.screenshots {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin-bottom: 50px;
+}
+
+.phone-mockup {
+    background-image: url('https://i.imgur.com/Qd4qL6r.png'); /* Simple phone frame */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 610px;
+    margin: 0 auto;
+    position: relative;
+    padding: 15px;
+}
+
+.screenshot-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.screenshot-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: fadeSlides 12s infinite;
+}
+
+.screenshot-container img:nth-child(1) { animation-delay: 0s; }
+.screenshot-container img:nth-child(2) { animation-delay: 4s; }
+.screenshot-container img:nth-child(3) { animation-delay: 8s; }
+
+@keyframes fadeSlides {
+    0% { opacity: 0; }
+    8.33% { opacity: 1; } /* Fade in for 1s */
+    33.33% { opacity: 1; } /* Stay for 3s */
+    41.66% { opacity: 0; } /* Fade out for 1s */
+    100% { opacity: 0; }
+}
+
+
+/* --- Footer --- */
 footer {
     text-align: center;
-    padding: 30px 20px;
-    background-color: #1a237e;
-    color: #e0e0e0;
+    padding: 40px 20px;
+    background-color: var(--dark-blue);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 footer a {
-    color: #fff;
+    color: var(--white-color);
     text-decoration: none;
     margin: 0 15px;
+    transition: opacity 0.2s ease;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    opacity: 0.8;
 }
 
 footer p {
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 0.9rem;
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    .screenshots-grid img {
-        max-width: 100%;
-    }
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .app-title { font-size: 2.5rem; }
+    .tagline { font-size: 1.1rem; }
+    .features { padding: 60px 0; }
 }
