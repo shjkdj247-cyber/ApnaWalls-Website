@@ -1,133 +1,296 @@
-/* General styles */
+/* ---
+   ApnaWalls Website Stylesheet
+   Designed for a professional and modern look.
+--- */
+
+/* --- 1. Variables and Global Styles --- */
+:root {
+    --primary-color: #3b82f6; /* A vibrant, modern blue */
+    --primary-hover: #2563eb;
+    --dark-color: #111827;
+    --secondary-dark: #1f2937;
+    --light-color: #f9fafb;
+    --text-color: #6b7280;
+    --white-color: #ffffff;
+    --font-family: 'Inter', sans-serif;
+    --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #333;
-  line-height: 1.6;
-  background-color: #fdfdfd;
+    font-family: var(--font-family);
+    background-color: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-/* Hero Section */
+/* --- 2. Animated Background Shapes --- */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape1 { width: 400px; height: 400px; top: -150px; left: -100px; }
+.shape2 { width: 500px; height: 500px; bottom: -200px; right: -150px; animation-delay: 5s; }
+.shape3 { width: 300px; height: 300px; bottom: 50%; right: 40%; animation-delay: 10s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+}
+
+
+/* --- 3. Hero Header --- */
 .hero {
-  background: linear-gradient(135deg, #4e54c8, #8f94fb);
-  color: white;
-  padding: 4rem 1rem;
-  text-align: center;
+    background: linear-gradient(135deg, #7aa5e9, var(--primary-color));
+    color: var(--white-color);
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    animation: fadeInDown 1s ease-out;
 }
 
 .logo {
-  width: 100px;
-  margin-bottom: 1rem;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+    border-radius: 28px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.5);
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+.app-title {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 0.5rem;
 }
 
 .tagline {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
 }
 
-.btn-primary {
-  display: inline-block;
-  background-color: #ffcc00;
-  color: #333;
-  padding: 0.9rem 2rem;
-  font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-.btn-primary:hover {
-  background-color: #ffdb4d;
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Screenshots Section */
-.screenshots {
-  padding: 4rem 1rem;
-  background-color: #fff;
-  text-align: center;
+.download-button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+}
+
+.version-info {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* --- 4. Section Styling --- */
+section {
+    padding: 100px 0;
 }
 
 .section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 600;
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 4rem;
+    position: relative;
 }
 
-.screenshot-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 1rem auto 0;
+    border-radius: 2px;
 }
 
-.screenshot-grid img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-.screenshot-grid img:hover {
-  transform: scale(1.03);
+/* --- 5. Screenshots Section --- */
+.phone-mockup-wrapper {
+    perspective: 1000px;
 }
 
-/* Footer */
+.phone-mockup {
+    background-image: url('https://i.imgur.com/Qd4qL6r.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 610px;
+    margin: 0 auto;
+    padding: 15px;
+    transition: transform 0.4s ease-out;
+}
+
+.phone-mockup:hover {
+    transform: rotateY(5deg) rotateX(5deg) scale(1.05);
+}
+
+.screenshot-carousel {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--dark-color);
+}
+
+.screenshot-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: fadeCarousel 12s infinite ease-in-out;
+}
+
+.screenshot-carousel img:nth-child(1) { animation-delay: 0s; }
+.screenshot-carousel img:nth-child(2) { animation-delay: 4s; }
+.screenshot-carousel img:nth-child(3) { animation-delay: 8s; }
+
+@keyframes fadeCarousel {
+    0% { opacity: 0; transform: scale(1.05); }
+    8.33% { opacity: 1; transform: scale(1); } /* 1s fade in */
+    33.33% { opacity: 1; transform: scale(1); } /* 3s stay */
+    41.66% { opacity: 0; transform: scale(1.05); } /* 1s fade out */
+    100% { opacity: 0; }
+}
+
+/* --- 6. Features Section --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* --- 7. Footer --- */
 footer {
-  background-color: #f4f4f4;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  font-size: 0.9rem;
+    padding: 40px 20px;
+    background-color: var(--secondary-dark);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.footer-links {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .footer-links a {
-  color: #4e54c8;
-  text-decoration: none;
-  transition: color 0.3s ease;
+    color: var(--white-color);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #8f94fb;
+    color: var(--primary-color);
 }
 
-/* Responsive Tweaks */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .tagline {
-    font-size: 1rem;
-  }
-  .footer-content {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+/* --- 8. Animation & Responsive --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-left: 0;
+    }
+    .footer-links a { margin-left: 0; }
+    .section-title { font-size: 2rem; }
 }
